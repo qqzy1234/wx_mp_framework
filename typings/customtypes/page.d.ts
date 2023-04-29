@@ -1,0 +1,1 @@
+declare type page = WechatMiniprogram.Page.Instance<IAnyObject, IAnyObject>
