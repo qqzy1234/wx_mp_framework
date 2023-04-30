@@ -24,6 +24,18 @@
 >>+ 当登录接口返回后 执行loginReadyOnLoad和loginReadyOnShow
 >>
 >> 这样就可以在页面的生命周期方法中拿到登录接口返回的数据了
+>
+> 5. behavior怎么办
+>> 小程序的behaviors方法时不能被重写的 所以引入controller目录下的behaviors.ts公共类 在自定义behaviors时 直接调用该类中的Behavior方法 将options传入 即可对options中的所有方法注入参数 达到和页面及组件同样的效果
+>> ```javascript
+>> import Behavior from '../controller/behavior'
+>>
+>> module.exports = Behavior({
+>>     data: {},
+>>     mefthods: {}
+>> })
+>> ```
+>>
 
 ## 使用方式
 
@@ -87,7 +99,7 @@ export default new class globalEventListen {
 
 ### 请求和响应
 
-> 封装的`wx.require`方法
+> 封装的 `wx.require` 方法
 
 + 发送请求
 
@@ -184,7 +196,7 @@ methods.router.openMini(appId, path, envVersion)
 methods.router.getRouterInfo(type<string>, path?<string>)
 ```
 
-+ `getRouterInfo`方法参数：
++ `getRouterInfo` 方法参数：
 > currentPath： 获取当前页面的path
 > 
 > prevPath：获取上一个页面的path
@@ -219,6 +231,45 @@ methods.showLoading(title<string>)
 methods.hideLoading(noConflict<boolean>)
 methods.showToast(title<string>, icon?<icon>, duration?<number>)
 methods.hideToast()
+```
+
+### 表单验证器
+> 对 `WxValidate.js` 的封装
+
+#### 示例代码：
+
+```javascript
+// 添加规则
+methods.validate.add(字段名<string>, 规则<string>, 提示信息<string>)
+// 获取WxValidate对象
+let v = validate.getValidate()
+// 验证（验证通过时check方法返回true否则返回错误信息）
+let res = validate.check(v, query)
+if (res) {
+    // 通过
+} else {
+    // 弹出错误信息
+    methods.showToast(v.errorList[0].msg, 'none', 1000)
+}
+```
+
+### 全局状态管理（store）
+
+#### 示例代码：
+
+```javascript
+// 根据key获取app.js中的globalData对应值
+methods.getGlobal(key<string>)
+// 根据key将值存储到app.js中的globalData上
+methods.setGlobal(key<string>, value<any>)
+// 根据key获取store上的某个值
+methods.getStore(key<string>)
+// 根据key将值存储到Store上
+methods.setStore(key<string>, value<any>)
+// 根据key获取小程序Storage的某个值
+methods.getStorage(key<string>)
+// 根据key将值存储到Storage上
+methods.setStorage(key<string>, value<any>)
 ```
 
 # 代码下载后需要自行建立项目配置文件project.private.config.json和project.config.json
