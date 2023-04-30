@@ -39,6 +39,48 @@ new baseController()
 
 ```
 
+### 第三步：在framework/methods/getEnv.ts文件中配置开发和生产环境的appid
+
+## 页面、组件和全局监听事件
+
++ 页面、组件中监听
+> eventListen中的方法会在真正的事件执行之前执行
+```javascript
+// 页面中
+Page({
+    data: {}
+    eventListen: {
+        // 监听全部事件
+        onEvent() {}
+        // 监听点击事件
+        onTap() {}
+    }
+})
+// 组件中
+Component({
+    data: {}
+    eventListen: {
+        // 监听全部事件
+        onEvent() {}
+        // 监听点击事件
+        onTap() {}
+    }
+})
+```
+
++ 全局事件监听（framework/globalEventListen.ts文件）
+```javascript
+// framework/globalEventListen.ts
+export default new class globalEventListen {
+    constructor() {}
+    // 全局的全部事件
+    onEvent(e: any, self: any, methods: anyObj, config: anyObj) {}
+    // 全局的全部点击事件
+    onTap(e: any, self: any, methods: anyObj, config: anyObj) {}
+}
+```
+
+
 ## 工具类
 
 + 所有的工具类都可以单独拿出来使用
@@ -54,19 +96,19 @@ new baseController()
 ```javascript
 // 当前只写了三种请求 有需要的话可以在require.js中自行添加
 // 发送请求
-methods.DvRequest.get(url, data, [header]).then(res => {
+methods.request.get(url, data, [header]).then(res => {
     console.log(res);
 }).catch(res => {
     console.log(res);
 })
 
-methods.DvRequest.post(url, data, [header]).then(res => {
+methods.request.post(url, data, [header]).then(res => {
     console.log(res);
 }).catch(res => {
     console.log(res);
 })
 
-methods.DvRequest.put(url, data, [header]).then(res => {
+methods.request.put(url, data, [header]).then(res => {
     console.log(res);
 }).catch(res => {
     console.log(res);
@@ -78,23 +120,23 @@ methods.DvRequest.put(url, data, [header]).then(res => {
 #### 示例代码：
 ```javascript
 // 请求拦截器
-methods.DvRequest.use({
+methods.request.use({
     response: function (res) {
-        return methods.DvRequest.getResult(success<bool>, [backerr]<Boolean>, [errorMsg]<string>, [fn])
+        return methods.request.getResult(success<bool>, [backerr]<Boolean>, [errorMsg]<string>, [fn])
     },
 })
 ```
 ```javascript
 // 响应拦截器
-methods.DvRequest.use({
+methods.request.use({
     request: function () {
-        return methods.DvRequest.getResult(success<bool>,, [backerr]<Boolean>, [errorMsg]<string>, [fn])
+        return methods.request.getResult(success<bool>,, [backerr]<Boolean>, [errorMsg]<string>, [fn])
     }
 })
 ```
 ```javascript
 // 添加配置
-methods.DvRequest.use({
+methods.request.use({
     setting: {
         response: {
             code: 20000, // 返回状态码
@@ -110,7 +152,7 @@ methods.DvRequest.use({
 + 获取网络请求任务对象
 
 ```javascript
-let getTask = methods.DvRequest.getTask()
+let getTask = methods.request.getTask()
 ```
 
 ### 路由
@@ -118,26 +160,26 @@ let getTask = methods.DvRequest.getTask()
 #### 示例代码：
 
 ```javascript
-methods.DvRouter.navigateTo(path<string>, {
+methods.router.navigateTo(path<string>, {
     // 一些参数
 }, events)
-methods.DvRouter.switchTab(path<string>, {
+methods.router.switchTab(path<string>, {
     // 一些参数
 })
-methods.DvRouter.reLaunch(path<string>, {
+methods.router.reLaunch(path<string>, {
     // 一些参数
 })
-methods.DvRouter.redirectTo(path<string>, {
+methods.router.redirectTo(path<string>, {
     // 一些参数
 })
 // 参数为返回的页数
-methods.DvRouter.navigateBack(num<number>)
+methods.router.navigateBack(num<number>)
 // 退出小程序（必须有点击事件）
-methods.DvRouter.exit(option<Object>)
+methods.router.exit(option<Object>)
 // 打开新的小程序
-methods.DvRouter.openMini({appId, path, envVersion, ...})
+methods.router.openMini({appId, path, envVersion, ...})
 // 或
-methods.DvRouter.openMini(appId, path, envVersion)
+methods.router.openMini(appId, path, envVersion)
 // 获取路由信息
 methods.router.getRouterInfo(type<string>, path?<string>)
 ```
@@ -154,6 +196,19 @@ methods.router.getRouterInfo(type<string>, path?<string>)
 > pageObjList：获取所有页面的对象列表
 >
 > pageObj：获取指定path的页面对象（使用此参数时必须传入第二个参数）
+
+#### 记录用户的跳转路线
+```javascript
+// 开始记录跳转路线
+methods.router.onRecordRoute(recordCurrentPage<boolean>)
+// 停止记录跳转路线
+methods.router.offRecordRoute()
+// 获取跳转路线
+methods.router.getRoute()
+```
+
+#### 全局路由配置（framework/intercept.ts文件）
+> 文件中的intercept方法不返回true时 跳转地址会以该方法返回的地址为准
 
 ### 各种提示框
 
