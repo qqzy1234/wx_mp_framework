@@ -242,9 +242,9 @@ methods.hideToast()
 // 添加规则
 methods.validate.add(字段名<string>, 规则<string>, 提示信息<string>)
 // 获取WxValidate对象
-let v = validate.getValidate()
+let v = methods.validate.getValidate()
 // 验证（验证通过时check方法返回true否则返回错误信息）
-let res = validate.check(v, query)
+let res = methods.validate.check(v, query)
 if (res) {
     // 通过
 } else {
