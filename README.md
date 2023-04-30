@@ -259,17 +259,17 @@ if (res) {
 
 ```javascript
 // 根据key获取app.js中的globalData对应值
-methods.getGlobal(key<string>)
+methods.store.getGlobal(key<string>)
 // 根据key将值存储到app.js中的globalData上
-methods.setGlobal(key<string>, value<any>)
+methods.store.setGlobal(key<string>, value<any>)
 // 根据key获取store上的某个值
-methods.getStore(key<string>)
+methods.store.getStore(key<string>)
 // 根据key将值存储到Store上
-methods.setStore(key<string>, value<any>)
+methods.store.setStore(key<string>, value<any>)
 // 根据key获取小程序Storage的某个值
-methods.getStorage(key<string>)
+methods.store.getStorage(key<string>)
 // 根据key将值存储到Storage上
-methods.setStorage(key<string>, value<any>)
+methods.store.setStorage(key<string>, value<any>)
 ```
 
 # 代码下载后需要自行建立项目配置文件project.private.config.json和project.config.json
