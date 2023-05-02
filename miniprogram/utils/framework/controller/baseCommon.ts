@@ -59,7 +59,7 @@ export default class common {
         let configs = {app: getApp(), config, api, noPrefixApi}
         return self.createProxy(method, (target, thisArg, argArray) => {
             if (!(methodName in event)) {
-                addEventListen(argArray[0], self.eventListen, thisArg)
+                addEventListen.addListen(argArray[0], self.eventListen, thisArg)
                 switch (this.callerName) {
                     case 'app':
                         lifeCycle.app(target, thisArg, argArray, self, configs, methodName, methods)
