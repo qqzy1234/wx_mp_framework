@@ -61,6 +61,7 @@ new baseController()
 // 页面中
 Page({
     data: {}
+    // 此处方法的命名规则为on前缀加事件名称（首字母大写）
     eventListen: {
         // 监听全部事件
         onEvent() {},
