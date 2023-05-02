@@ -63,7 +63,7 @@ Page({
     data: {}
     eventListen: {
         // 监听全部事件
-        onEvent() {}
+        onEvent() {},
         // 监听点击事件
         onTap() {}
     }
@@ -73,7 +73,7 @@ Component({
     data: {}
     eventListen: {
         // 监听全部事件
-        onEvent() {}
+        onEvent() {},
         // 监听点击事件
         onTap() {}
     }
