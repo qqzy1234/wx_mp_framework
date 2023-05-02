@@ -1,4 +1,17 @@
 <!-- index.wxml -->
 <view class="container">
-    
+    <!-- 双向绑定 -->
+    <view>
+        <view>双向绑定</view>
+        <input value="{{motto}}" bindinput="inputBind" id="motto" />
+    </view>
+    <!-- 路由 -->
+    <view>
+        <view>路由</view>
+        <view class="jump">
+            <view bindtap="navigateTo">navigateTo</view>
+            <view bindtap="redirectTo">redirectTo</view>
+            <view bindtap="reLaunch">reLaunch</view>
+        </view>
+    </view>
 </view>

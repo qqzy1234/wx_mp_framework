@@ -1,1 +1,22 @@
 /**index.wxss**/
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+    & > view {
+        margin-top: 20rpx;
+        input {
+            border: 1rpx solid #999;
+            margin-top: 20rpx;
+        }
+        & > .jump {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20rpx;
+            & > view {
+                border: 1rpx solid #999;
+                padding: 10rpx;
+            }
+        }
+    }
+}
