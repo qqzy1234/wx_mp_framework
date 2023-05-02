@@ -53,6 +53,8 @@ new baseController()
 
 ### 第三步：在framework/methods/getEnv.ts文件中配置开发和生产环境的appid
 
+### 第四步：拷贝typings目录下的自定义生命文件到项目的typings目录下
+
 ## 页面、组件和全局事件监听
 
 + 页面、组件中监听
@@ -70,7 +72,7 @@ Page({
     }
 })
 // 组件中
-Component({
+Component(<customOptions>{
     data: {}
     eventListen: {
         // 监听全部事件
@@ -206,7 +208,7 @@ methods.router.exit(option<Object>)
 // 打开新的小程序
 methods.router.openMini({appId, path, envVersion, ...})
 // 或
-methods.router.openMini(appId, path, envVersion)
+methods.router.openMini(appId<string>, path<string>, envVersion<object>)
 // 获取路由信息
 methods.router.getRouterInfo(type<string>, path?<string>)
 ```
