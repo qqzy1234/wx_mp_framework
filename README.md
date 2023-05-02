@@ -53,7 +53,7 @@ new baseController()
 
 ### 第三步：在framework/methods/getEnv.ts文件中配置开发和生产环境的appid
 
-## 页面、组件和全局监听事件
+## 页面、组件和全局事件监听
 
 + 页面、组件中监听
 > eventListen中的方法会在真正的事件执行之前执行
@@ -92,6 +92,20 @@ export default new class globalEventListen {
 }
 ```
 
+## 页面中监听data字段数据变化
+
+```javascript
+Page({
+    data: {
+        abc: ''
+    }
+    watch: {
+        abc(newValue, oldValue, self, methods, config) {
+
+        }
+    }
+})
+```
 
 ## 工具类
 
