@@ -3,24 +3,24 @@ export default class selectQuery {
         
     }
 
-    getQueryObj(obj?: anyObj) {
+    getQueryObj(obj?: AnyObject) {
         let object = obj ? obj : wx
         return object.createSelectorQuery()
     }
 
-    getQuery(element: string, obj?: anyObj) {
+    getQuery(element: string, obj?: AnyObject) {
         return this.getQueryObj(obj).select(element)
     }
 
-    getQueryAll(element: string, obj?: anyObj) {
+    getQueryAll(element: string, obj?: AnyObject) {
         return this.getQueryObj(obj).selectAll(element)
     }
 
-    getQueryIn(component: anyObj, obj?: anyObj) {
+    getQueryIn(component: AnyObject, obj?: AnyObject) {
         return this.getQueryObj(obj).in(component)
     }
 
-    getQueryViewport(obj?: anyObj) {
+    getQueryViewport(obj?: AnyObject) {
         return this.getQueryObj(obj).selectViewport()
     }
 }

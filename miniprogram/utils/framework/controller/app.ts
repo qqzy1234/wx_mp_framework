@@ -1,6 +1,6 @@
-import baseCommon from "./baseCommon"
+import common from "./common"
 
-export default class app extends baseCommon {
+export default class app extends common {
     constructor() {
         super()
         this.callerName = 'app'
@@ -8,7 +8,7 @@ export default class app extends baseCommon {
 
     addProxy(): any {
         let self = this
-        return this.createProxy(App, (target: Function, thisArg: anyObj, argArray: any[]) => {
+        return this.createProxy(App, (target: Function, thisArg: AnyObject, argArray: any[]) => {
             self.addParam(argArray[0])
             self.reflect(target, thisArg, argArray)
         })

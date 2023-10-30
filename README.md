@@ -1,5 +1,7 @@
 # wx_mp_framework 微信小程序 基于原生写法的小架子和工具集合
 
+## 开发时使用的开发者工具版本：Stable 1.06.2308310
+
 ## 开发初衷
 
 ### 自己在工作中需要使用原生方式来开发微信小程序 在开发过程中遇到了一些不太顺手的问题 比如： 
@@ -53,8 +55,6 @@ new baseController()
 
 ### 第三步：在framework/methods/getEnv.ts文件中配置开发和生产环境的appid
 
-### 第四步：拷贝typings目录下的自定义生命文件到项目的typings目录下
-
 ## 页面、组件和全局事件监听
 
 + 页面、组件中监听
@@ -89,9 +89,9 @@ Component(<customOptions>{
 export default new class globalEventListen {
     constructor() {}
     // 全局的全部事件
-    onEvent(e: any, self: any, methods: anyObj, config: anyObj) {}
+    onEvent(e: any, self: any, methods: AnyObject, config: AnyObject) {}
     // 全局的全部点击事件
-    onTap(e: any, self: any, methods: anyObj, config: anyObj) {}
+    onTap(e: any, self: any, methods: AnyObject, config: AnyObject) {}
 }
 ```
 
@@ -236,8 +236,8 @@ methods.router.offRecordRoute()
 methods.router.getRoute()
 ```
 
-#### 全局路由配置（framework/intercept.ts文件）
-> 文件中的intercept方法不返回true时 跳转地址会以该方法返回的地址为准
+#### 全局路由配置（路由守卫 framework/routeGuard.ts文件）
+> 文件中的routeGuard方法不返回true时 跳转地址会以该方法返回的地址为准
 
 ### 各种提示框
 

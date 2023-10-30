@@ -7,7 +7,7 @@ import Behavior from '../controller/behavior'
 module.exports = Behavior({
     data: {},
     methods: {
-        inputBind(e: anyObj, self: anyObj) {
+        inputBind(e: AnyObject, self: AnyObject) {
             // 赋值之前的方法
             let beforeFun: string = e.currentTarget.dataset.beforefun
             // 赋值之后的方法
@@ -18,7 +18,7 @@ module.exports = Behavior({
                 return
             }
             if (beforeFun && Object.getPrototypeOf(self).hasOwnProperty(beforeFun)) {
-                let proto: anyObj = Object.getPrototypeOf(self)
+                let proto: AnyObject = Object.getPrototypeOf(self)
                 newPromise(function (resolve) {
                     resolve(proto[beforeFun].call(proto))
                 }).then((res: any) => {
@@ -57,13 +57,13 @@ module.exports = Behavior({
     }
 })
 
-function setter(obj: anyObj, fn: () => any, self: anyObj) {
+function setter(obj: AnyObject, fn: () => any, self: AnyObject) {
     self.setData(obj, () => {
         fn && fn()
     })
 }
 
-function setInput(id: any, value: any, afterFun: () => any, self: anyObj) {
+function setInput(id: any, value: any, afterFun: () => any, self: AnyObject) {
     setter({
         [id]: value
     }, () => {

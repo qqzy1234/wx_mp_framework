@@ -1,11 +1,6 @@
-/// <reference path="./types/index.d.ts" />
 /// <reference path="./customtypes/index.d.ts" />
 
 type IAnyObject = WechatMiniprogram.IAnyObject
-
-type anyObj = {
-    [key: string]: any
-}
 
 type AccountInfo = WechatMiniprogram.AccountInfo
 
@@ -18,7 +13,7 @@ type fail = WechatMiniprogram.GeneralCallbackResult
 type icon = 'success' | 'error' | 'loading' | 'none'
 
 interface customWx extends WechatMiniprogram.Wx {
-    qy: anyObj,
+    qy: AnyObject,
 }
 
 interface customSysInfo extends WechatMiniprogram.SystemInfo {

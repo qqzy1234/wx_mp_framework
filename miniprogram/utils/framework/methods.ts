@@ -1,4 +1,3 @@
-import newProxy from "./methods/newProxy";
 import newPromise from './methods/newPromise'
 import tips from './methods/tips'
 import Request from "./methods/request";
@@ -13,7 +12,6 @@ import hasProperty from "./methods/hasProperty";
  * 此文件为所有方法和工具类的入口
  */
 export = {
-    newProxy,
     newPromise,
     ...tips,
     request: new Request,
@@ -21,7 +19,7 @@ export = {
     next,
     getLabelData,
     validate: new validate,
-    store: {} as anyObj,
+    store: {} as AnyArray,
     selectQuery: new selectQuery,
     hasProperty
 }

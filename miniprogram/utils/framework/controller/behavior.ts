@@ -1,13 +1,13 @@
-import common from "./baseCommon"
+import common from "./common"
 
 class behavior extends common {
-    static self: anyObj
+    static self: AnyObject
     constructor() {
         super()
         behavior.self = this
     }
 
-    static Behavior(options: anyObj) {
+    static Behavior(options: AnyObject) {
         behavior.self.addParam(options)
         return Behavior(options)
     }

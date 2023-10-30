@@ -10,5 +10,7 @@
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "rendererOptions": { "skyline": { "defaultDisplayBlock": true } }
 }

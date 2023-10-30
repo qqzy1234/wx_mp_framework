@@ -1,8 +1,8 @@
 import { WxValidate } from "./WxValidate/WxValidate";
 
 export default class initValidate {
-    rule: anyObj
-    message: anyObj
+    rule: AnyObject
+    message: AnyObject
 
     constructor() {
         this.rule = {}
@@ -22,7 +22,7 @@ export default class initValidate {
             console.error('添加规则错误！参数rule（规则项）和参数message（提示信息）类型不统一');
             return
         }
-        let ruleObj: anyObj = {}
+        let ruleObj: AnyObject = {}
         let ruleStr: string = ''
         if (typeof rule == 'string') {
             let arr = rule.split(":")
@@ -36,7 +36,7 @@ export default class initValidate {
             ruleObj = rule
         }
         this.rule[fieldName] = this.rule[fieldName] ? Object.assign(this.rule[fieldName], ruleObj) : ruleObj
-        let messageObj: anyObj = {}
+        let messageObj: AnyObject = {}
         if (typeof message == 'string') {
             messageObj[ruleStr] = message
         } else if (messageType == 'object') {

@@ -8,7 +8,7 @@ class Request {
     interceptors: Array<object>
     requestSetting: object
     responseSetting: responseSetting
-    requestTask: anyObj
+    requestTask: AnyObject
 
     constructor() {
         this.interceptors = []
@@ -18,7 +18,7 @@ class Request {
     }
     // 注入拦截器
     use(obj: interceptors) {
-        let interceptors: anyObj = {}
+        let interceptors: AnyObject = {}
         if (obj.request) {
             interceptors['request'] = obj.request
         }

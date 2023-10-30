@@ -20,7 +20,7 @@ export default class watch {
         })
     }
 
-    addListenOfData(thisArg: anyObj, watch: anyObj) {
+    addListenOfData(thisArg: AnyObject, watch: AnyObject) {
         let data = thisArg.data
         let self = this
         let configs = {app: getApp(), config, api, noPrefixApi}

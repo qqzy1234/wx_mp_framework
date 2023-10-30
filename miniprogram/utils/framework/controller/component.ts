@@ -1,4 +1,4 @@
-import common from "./baseCommon"
+import common from "./common"
 import addBehaviors from "./tools/addBehaviors"
 
 export default class component extends common {
@@ -9,10 +9,15 @@ export default class component extends common {
 
     addProxy(): any {
         let self = this
-        return this.createProxy(Component, (target: Function, thisArg: anyObj, argArray: any[]) => {
-            addBehaviors(argArray)
-            self.addParam(argArray[0])
-            self.reflect(target, thisArg, argArray)
+        return this.createProxy(Component, (target: Function, thisArg: AnyObject, argArray: any[]) => {
+            let reflect = self.reflect(target, thisArg, argArray)
+            if (argArray.length != 0) {
+                addBehaviors(argArray)
+                self.addParam(argArray[0])
+            } else {
+                self.chaining(reflect)
+            }
+            return reflect
         })
     }
 }

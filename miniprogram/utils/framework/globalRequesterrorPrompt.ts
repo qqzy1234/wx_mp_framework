@@ -43,7 +43,7 @@ class errorPrompt {
     }
 
     // code不匹配时的错误提示
-    codeError(value: any, apiName: string, url: string, data: anyObj) {
+    codeError(value: any, apiName: string, url: string, data: AnyObject) {
         return newPromise().reject({
             backerr: true,
             errorCode: value.data.code,
@@ -56,7 +56,7 @@ class errorPrompt {
     }
 
     // 请求状态码非200时的错误提示（此提示不受拦截器限制）
-    statusError(value: any, apiName: string, url: string, data: anyObj) {
+    statusError(value: any, apiName: string, url: string, data: AnyObject) {
         return newPromise().reject({
             backerr: true,
             info: value,

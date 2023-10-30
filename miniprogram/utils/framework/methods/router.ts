@@ -1,5 +1,5 @@
 import newPromise from './newPromise'
-import intercept from '../intercept'
+import routeGuard from '../routeGuard'
 
 /**
  * 封装路由类
@@ -19,8 +19,8 @@ export default class router {
             if (typeof mode == 'undefined') {
                 mode = 'navigateTo'
             }
-            (wx as anyObj)[mode]({
-                url: intercept(url) === true ? url : intercept(url),
+            (wx as AnyObject)[mode]({
+                url: routeGuard(url) === true ? url : routeGuard(url),
                 events: events,
                 success: function (res: success | fail) {
                     if (that.record) {
@@ -73,7 +73,7 @@ export default class router {
         })
     }
 
-    exit(option: anyObj = {}) {
+    exit(option: AnyObject = {}) {
         return wx.exitMiniProgram(option)
     }
 
@@ -98,7 +98,7 @@ export default class router {
     }
 
     // 拼接参数
-    spliceParam(url: string, param: anyObj) {
+    spliceParam(url: string, param: AnyObject) {
         let newUrl = url.indexOf('?') != -1 ? url : url + '?'
         for (const key in param) {
             let str = key + '=' + param[key]

@@ -4,14 +4,14 @@ import methods from "../../methods"
 
 // 添加事件监听
 export default new class addEventListen {
-    thisArg: anyObj
-    configs: anyObj
+    thisArg: AnyObject
+    configs: AnyObject
     constructor() {
         this.thisArg = {}
         this.configs = {}
     }
 
-    addListen(event: anyObj, eventListen: anyObj, thisArg: anyObj) {
+    addListen(event: AnyObject, eventListen: AnyObject, thisArg: AnyObject) {
         this.configs = {app: getApp(), config, api, noPrefixApi}
         this.thisArg = thisArg
         if (event && event.type) {
@@ -20,7 +20,7 @@ export default new class addEventListen {
         }
     }
 
-    loop(listen: anyObj, event: anyObj) {
+    loop(listen: AnyObject, event: AnyObject) {
         let keys = Reflect.ownKeys(listen),
             self = this
         keys.forEach((res: any) => {

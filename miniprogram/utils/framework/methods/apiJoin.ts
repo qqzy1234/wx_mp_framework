@@ -14,14 +14,14 @@ class apiJoin {
         return this._instance
     }
 
-    join(apiList: anyObj) {
+    join(apiList: AnyObject) {
         for (const key in apiList) {
             apiList[key] = this.host + this.apiPrefix + apiList[key]
         }
         return apiList
     }
 
-    noPrefix(apiList: anyObj) {
+    noPrefix(apiList: AnyObject) {
         for (const key in apiList) {
             apiList[key] = this.host + apiList[key]
         }

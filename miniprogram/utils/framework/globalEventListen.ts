@@ -3,12 +3,12 @@ export default new class globalEventListen {
 
     }
 
-    onEvent(e: any, self: any, methods: anyObj, config: anyObj) {
+    onEvent(e: any, self: any, methods: AnyObject, config: AnyObject) {
         // console.log(e, self);
         
     }
 
-    onTap(e: any, self: any, methods: anyObj, config: anyObj) {
+    onTap(e: any, self: any, methods: AnyObject, config: AnyObject) {
 
     }
 }

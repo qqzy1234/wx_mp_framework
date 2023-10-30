@@ -1,22 +1,15 @@
 import Login from "../../module/Login"
 import store from "../../store/store"
+import { lifeCycleEnum } from './lifeCycleEnum'
 
-enum applifeCycleName {
-    onLaunch = 'onLaunch',
-    onShow = 'onShow'
-}
-enum pagelifeCycleName {
-    onLoad = 'onLoad',
-    onShow = 'onShow'
-}
 export default class lifeCycle {
     constructor() {
 
     }
 
-    static app(target: Function, thisArg: anyObj, argArray: any[], self: anyObj, configs: anyObj, key: string, methods: anyObj) {
+    static app(target: Function, thisArg: AnyObject, argArray: any[], self: AnyObject, configs: AnyObject, key: string, methods: AnyObject) {
         switch (key) {
-            case applifeCycleName.onLaunch:
+            case lifeCycleEnum.onLaunch:
                 methods.store = new store(thisArg)
                 Login.wxLogin(thisArg).then((res: any) => {
                     Login.userLogin(thisArg, res.code, () => {
@@ -27,7 +20,7 @@ export default class lifeCycle {
                 })
                 self.reflect(target, thisArg, [...argArray, thisArg, methods, configs])
                 break;
-            case applifeCycleName.onShow:
+            case lifeCycleEnum.onShow:
                 self.reflect(target, thisArg, [...argArray, thisArg, methods, configs])
                 break
             default:
@@ -36,20 +29,20 @@ export default class lifeCycle {
         }
     }
     
-    static page(target: Function, thisArg: anyObj, argArray: any[], self: anyObj, configs: anyObj, key: string, methods: anyObj) {
+    static page(target: Function, thisArg: AnyObject, argArray: any[], self: AnyObject, configs: AnyObject, key: string, methods: AnyObject) {
         switch (key) {
-            case pagelifeCycleName.onLoad:
+            case lifeCycleEnum.onLoad:
                 if (!methods.store.getGlobal('token')) {
-                    methods.store.Login.loginReadyOnLoad = (app: anyObj) => {
+                    methods.store.Login.loginReadyOnLoad = (app: AnyObject) => {
                         self.reflect(target, thisArg, [...argArray, thisArg, methods, configs])
                     }
                     return
                 }
                 self.reflect(target, thisArg, [...argArray, thisArg, methods, configs])
                 break;
-            case pagelifeCycleName.onShow:
+            case lifeCycleEnum.onShow:
                 if (!methods.store.getGlobal('token')) {
-                    methods.store.Login.loginReadyOnShow = (app: anyObj) => {
+                    methods.store.Login.loginReadyOnShow = (app: AnyObject) => {
                         self.reflect(target, thisArg, [...argArray, thisArg, methods, configs])
                     }
                     return

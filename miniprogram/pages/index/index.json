@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "hello": "/components/hello/hello"
+  },
+  "renderer": "skyline",
+  "componentFramework": "glass-easel" 
 }

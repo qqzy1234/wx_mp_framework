@@ -14,4 +14,5 @@
             <view bindtap="reLaunch">reLaunch</view>
         </view>
     </view>
+    <hello></hello>
 </view>

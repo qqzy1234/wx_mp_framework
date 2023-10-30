@@ -1,7 +1,7 @@
 import hasProperty from "../../methods/hasProperty"
 let baseBehaviors = require('../../behaviors/baseBehaviors')
 
-export default function addBehaviors (argArray: anyObj[]) {
+export default function addBehaviors (argArray: AnyObject[]) {
     if (hasProperty(argArray[0], 'behaviors')) {
         argArray[0].behaviors = [baseBehaviors, ...argArray[0].behaviors]
     } else {

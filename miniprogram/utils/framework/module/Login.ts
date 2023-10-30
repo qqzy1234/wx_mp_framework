@@ -11,7 +11,7 @@ export default new class DvLogin {
         
     }
 
-    wxLogin(app: anyObj) {
+    wxLogin(app: AnyObject) {
         return newPromise(function (resolve: resolve, reject: reject) {
             // 判断是哪个环境
             wx.getSystemInfo({
@@ -43,7 +43,7 @@ export default new class DvLogin {
         })
     }
     // 调起登录接口
-    userLogin(app: anyObj, code: any, fn: () => void) {
+    userLogin(app: AnyObject, code: any, fn: () => void) {
         showLoading()
         request.get(api.login, {
             loginCode: code

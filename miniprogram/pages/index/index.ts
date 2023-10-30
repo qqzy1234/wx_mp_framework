@@ -20,18 +20,24 @@ Page({
         // 监听全部事件
         onEvent() {},
         // 监听点击事件
-        onTap(e: anyObj) {
+        onTap(e: AnyObject) {
             console.log('点击了');
         }
     },
 
-    navigateTo(e: anyObj, self: anyObj, methods: anyObj) {
-        methods.router.navigateTo('/pages/logs/logs')
+    navigateTo(e: AnyObject, self: AnyObject, methods: AnyObject) {
+        // methods.router.navigateTo('/pages/logs/logs')
+        console.log(self.a());
+        
     },
-    redirectTo(e: anyObj, self: anyObj, methods: anyObj) {
+    redirectTo(e: AnyObject, self: AnyObject, methods: AnyObject) {
         methods.router.redirectTo('/pages/logs/logs')
     },
-    reLaunch(e: anyObj, self: anyObj, methods: anyObj) {
+    reLaunch(e: AnyObject, self: AnyObject, methods: AnyObject) {
         methods.router.reLaunch('/pages/logs/logs')
+    },
+
+    a() {
+        return 111
     }
 })

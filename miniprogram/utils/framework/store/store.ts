@@ -1,7 +1,7 @@
 export default class store {
-    private _app: anyObj
-    Login: anyObj
-    constructor(app: anyObj) {
+    private _app: AnyObject
+    Login: AnyObject
+    constructor(app: AnyObject) {
         this._app = app
         this.Login = {
             loginReadyOnLoad: function () {},
@@ -10,7 +10,7 @@ export default class store {
         app['store'] = {}
     }
 
-    get(key: string, data: anyObj) {
+    get(key: string, data: AnyObject) {
         let keyArr = key.split('.'),
             result: any
         if (data.hasOwnProperty(keyArr[0])) {
@@ -30,7 +30,7 @@ export default class store {
         return result
     }
 
-    set(key: string, data: anyObj, value: any) {
+    set(key: string, data: AnyObject, value: any) {
         let keyArr = key.split('.'),
             result: any
         if (!data.hasOwnProperty(keyArr[0])) {
